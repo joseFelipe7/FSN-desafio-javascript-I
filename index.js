@@ -92,8 +92,23 @@ function buscarAluno(nome){
     }
     console.log(`O aluno ${nome} não foi encontrado :(`);
 }
-
-
+/* Essa funcionalidade irá permitir, cadastrar um aluno em um curso. 
+    Essa função só poderá ser executada em um aluno já devidamente cadastrado no sistema, e deverá armazenar a data atual no momento da matricula
+    Lembre-se de exibir o feedback para o usuário. */
+function matricularAluno(aluno, curso){
+    
+}
+/* retorno o id(indice) do aluno caso não exista retorna -1 */ 
+function getIdAluno(aluno){
+    let nome = aluno.nome;
+    for(let i = 0; i < alunosDaEscola.length; i++){
+        let alunoList = alunosDaEscola[i];
+        if(alunoList['nome'].indexOf(nome) >= 0){
+            return i;
+        }
+    }
+    return -1;
+}
 //recebe um aluno e exibi seus dados
 function imprimiUmUsuario(aluno){
     console.log(`Aluno ${aluno.nome}`);
