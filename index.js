@@ -109,6 +109,24 @@ function matricularAluno(aluno, curso){
         console.log(`aluno ${aluno.nome} ainda não consta na nossa lista :(`)
     }
 }
+ /*
+    Ao receber um aluno devidamente cadastrado em nossa lista. Você deverá incrementar uma falta ao aluno. 
+    Você deverá dar um feedback ao concluir a tarefa. Só poderá aplicar falta em aluno se o mesmo tiver matriculado em um curso.
+*/
+function aplicarFalta(aluno){
+    let idAluno = getIdAluno(aluno);
+    if(idAluno >= 0){
+        if(alunosDaEscola[idAluno]['cursos'].length > 0){
+            alunosDaEscola[idAluno]['faltas']++;
+            console.log(`aluno ${aluno.nome} recebeu uma falta`)
+        }else{
+            console.log(`aluno ${aluno.nome} ainda não foi matriculado em nenhum curso`)
+        }
+    }else{
+        console.log(`aluno ${aluno.nome} ainda não consta na nossa lista :(`)
+    }
+}
+    
 /* retorno o id(indice) do aluno caso não exista retorna -1 */ 
 function getIdAluno(aluno){
     let nome = aluno.nome;
@@ -143,4 +161,13 @@ function imprimiUmUsuario(aluno){
         console.log(`nenhuma nota foi atribuida a esse aluno`)
     }
 }
-
+aplicarFalta({
+    nome: "Henrique",
+    notas: [10, 9.8, 9.6],
+    cursos: [{
+        nomeDoCurso: "UX",
+        dataMatricula: new Date
+    }],
+    faltas: 0
+})
+listarAlunos()
