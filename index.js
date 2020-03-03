@@ -48,7 +48,7 @@ function adicionarAluno(nome) {
     }
     try {
         alunosDaEscola.push(aluno)
-        console.log('aluno matriculado com sucesso o/ :)')
+        console.log('aluno cadastrado com sucesso o/ :)')
     } catch (error) {
         console.log(`ocorreu um erro com a inserção do aluno :(  ${error.message}`)
     }
@@ -96,7 +96,18 @@ function buscarAluno(nome){
     Essa função só poderá ser executada em um aluno já devidamente cadastrado no sistema, e deverá armazenar a data atual no momento da matricula
     Lembre-se de exibir o feedback para o usuário. */
 function matricularAluno(aluno, curso){
-    
+    let idAluno = getIdAluno(aluno);
+    if(idAluno >= 0){
+        let novoCurso = {
+            nomeDoCurso: curso,
+            dataMatricula: new Date
+        }
+        
+        alunosDaEscola[idAluno]['cursos'].push(novoCurso);
+        console.log(`aluno ${aluno.nome} matriculado com sucesso o/ :)`)
+    }else{
+        console.log(`aluno ${aluno.nome} ainda não consta na nossa lista :(`)
+    }
 }
 /* retorno o id(indice) do aluno caso não exista retorna -1 */ 
 function getIdAluno(aluno){
@@ -132,4 +143,4 @@ function imprimiUmUsuario(aluno){
         console.log(`nenhuma nota foi atribuida a esse aluno`)
     }
 }
-    
+
