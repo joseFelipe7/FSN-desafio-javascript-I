@@ -143,7 +143,34 @@ function aplicarNota(aluno,nota){
     }else{
         console.log(`aluno ${aluno.nome} ainda não consta na nossa lista :(`)
     }
-}    
+}   
+/* 
+    Ao receber um aluno devidamente cadastrado em nossa lista, deverá dizer se o mesmo está aprovado ou não. 
+    Os critérios de aprovação são: ter no máximo 3 faltas e média 7 em notas.
+    Só o aluno só poderá ser aprovado se o mesmo tiver matriculado em um curso.
+    */ 
+function aprovarAluno(aluno){
+    let idAluno = getIdAluno(aluno);
+    if(idAluno >= 0){
+        if(alunosDaEscola[idAluno]['cursos'].length > 0){
+            let faltas = alunosDaEscola[idAluno]['faltas'];
+            let notas  = alunosDaEscola[idAluno]['notas'];
+            
+            let media  = notas.reduce((acumulador, valorAtual) => acumulador+valorAtual )
+            media = media/notas.length
+            if(faltas <= 3  && media >= 7){
+                console.log(`o aluno ${aluno.nome} esta aprovado o/ :)`)
+            }else{
+                console.log(`o aluno ${aluno.nome} foi reprovado :'(`)
+            }
+
+        }else{
+            console.log(`aluno ${aluno.nome} ainda não foi matriculado em nenhum curso`)
+        }
+    }else{
+        console.log(`aluno ${aluno.nome} ainda não consta na nossa lista :(`)
+    }
+}
 /* retorno o id(indice) do aluno caso não exista retorna -1 */ 
 function getIdAluno(aluno){
     let nome = aluno.nome;
@@ -178,4 +205,3 @@ function imprimiUmUsuario(aluno){
         console.log(`nenhuma nota foi atribuida a esse aluno`)
     }
 }
-
