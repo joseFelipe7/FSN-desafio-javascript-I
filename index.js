@@ -54,36 +54,30 @@ function adicionarAluno(nome) {
     }
     
 }
-
+/*Com essa função o usuário poderá ver todos os alunos cadastrados atualmente no sistema. 
+ Vale dizer que As informações deverão ser exibidas em um formato amigável.*/
 function listarAlunos() {
-    
-}
-
-function buscarAluno(nome: string) {
-    /* Por meio dessa função, podemos pesquisar um aluno por nome na lista de aluno. Ela deverá exibir um feedback, tanto para quando encontrar o aluno, tanto quando não encontrar. E deverá devolver um aluno em seu retorno. */
-}
-
-function matricularAluno(aluno: object, curso: string) {
-    /* Essa funcionalidade irá permitir, cadastrar um aluno em um curso. 
-    Essa função só poderá ser executada em um aluno já devidamente cadastrado no sistema, e deverá armazenar a data atual no momento da matricula
-    Lembre-se de exibir o feedback para o usuário. */
-}
-
-function aplicarFalta(aluno: object) {
-    /*
-     Ao receber um aluno devidamente cadastrado em nossa lista. Você deverá incrementar uma falta ao aluno. Você deverá dar um feedback ao concluir a tarefa. Só poderá aplicar falta em aluno se o mesmo tiver matriculado em um curso.
-    */
-}
-
-function aplicarNota(aluno: object) {
-    /*
-     Ao receber um aluno devidamente cadastrado em nossa lista. Você deverá adicionar uma nota ao aluno na sua lista de notas. Você deverá dar um feedback ao concluir a tarefa. Só poderá aplicar nota em aluno se o mesmo tiver matriculado em um curso.
-    */
-}
-
-function aprovarAluno(aluno: object) {
-    /* 
-    Ao receber um aluno devidamente cadastrado em nossa lista, deverá dizer se o mesmo está aprovado ou não. Os critérios de aprovação são: ter no máximo 3 faltas e média 7 em notas.
-    Só o aluno só poderá ser aprovado se o mesmo tiver matriculado em um curso.
-    */
+    for(aluno of alunosDaEscola){
+        console.log(`Aluno ${aluno.nome}`);
+        console.log(`Falta ${aluno.faltas}`);
+        if(aluno['cursos'].length != 0){
+            let cursos = aluno.cursos;
+            console.log('cursos:')
+            for(curso of cursos){
+                let dia       = String(curso['dataMatricula'].getDate());
+                let mes       = String(curso['dataMatricula'].getMonth()+1);
+                let ano       = String(curso['dataMatricula'].getFullYear());
+                let matricula = [dia.padStart(2, '0'),mes.padStart(2, '0'),ano].join('/');
+                console.log(`${curso.nomeDoCurso} matriculado Em ${matricula}`)   
+            }
+        }else{
+            console.log(`este aluno não esta matriculado em nenhum curso :'( `)
+        }
+        if(aluno['notas'] != 0){
+            console.log(`notas foram: ${aluno['notas'].join(', ')}`)
+        }else{
+            console.log(`nenhuma nota foi atribuida a esse aluno`)
+        }
+        console.log('------------------')
+    } 
 }
