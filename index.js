@@ -94,5 +94,27 @@ function buscarAluno(nome){
 }
 
 
-
+//recebe um aluno e exibi seus dados
+function imprimiUmUsuario(aluno){
+    console.log(`Aluno ${aluno.nome}`);
+    console.log(`Falta ${aluno.faltas}`);
+    if(aluno['cursos'].length != 0){
+        let cursos = aluno.cursos;
+        console.log('cursos:')
+        for(curso of cursos){
+            let dia       = String(curso['dataMatricula'].getDate());
+            let mes       = String(curso['dataMatricula'].getMonth()+1);
+            let ano       = String(curso['dataMatricula'].getFullYear());
+            let matricula = [dia.padStart(2, '0'),mes.padStart(2, '0'),ano].join('/');
+            console.log(`${curso.nomeDoCurso} matriculado Em ${matricula}`)   
+        }
+    }else{
+        console.log(`este aluno não esta matriculado em nenhum curso :'( `)
+    }
+    if(aluno['notas'] != 0){
+        console.log(`notas foram: ${aluno['notas'].join(', ')}`)
+    }else{
+        console.log(`nenhuma nota foi atribuida a esse aluno`)
+    }
+}
     
