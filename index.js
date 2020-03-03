@@ -81,3 +81,18 @@ function listarAlunos() {
         console.log('------------------')
     } 
 }
+ /* Por meio dessa função, podemos pesquisar um aluno por nome na lista de aluno. Ela deverá exibir um feedback, 
+ tanto para quando encontrar o aluno, tanto quando não encontrar. E deverá devolver um aluno em seu retorno. */  
+function buscarAluno(nome){
+    for(aluno of alunosDaEscola){
+        if(aluno['nome'].indexOf(nome) >= 0){
+            console.log(`O aluno ${nome} foi encontrado`);
+            return aluno;
+        }
+    }
+    console.log(`O aluno ${nome} não foi encontrado :(`);
+}
+
+
+
+    
